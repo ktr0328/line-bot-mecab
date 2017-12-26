@@ -3,7 +3,7 @@ require 'line/bot'
 require 'json'
 require 'mecab'
 require 'natto'
-require('./src/dictionary')
+require './src/dictionary'
 
 def client
   @client ||= Line::Bot::Client.new { |config|
