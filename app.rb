@@ -32,6 +32,8 @@ post '/callback' do
            conversion_text += 'ラグナロク'
          elsif n.surface == '僕' || n.surface == '俺' || n.surface == '私'
            conversion_text += '我'
+         elsif n.surface == '理解できない'
+           conversion_text += 'エニグマ'
          else
            conversion_text += n.surface
          end
