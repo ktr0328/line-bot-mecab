@@ -4,4 +4,4 @@ mv original.dic /app/vendor/mecab/lib/mecab/dic/ipadic/
 
 echo "userdic = /app/vendor/mecab/lib/mecab/dic/ipadic/original.dic" >> /app/vendor/mecab/lib/mecab/dic/ipadic/dicrc
 
-bundle exec rackup config.ru -p $PORT
+/app/vendor/bundle/ruby/2.4.0/bin/bundle exec rackup config.ru -p $PORT
