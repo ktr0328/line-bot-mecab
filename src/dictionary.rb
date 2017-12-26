@@ -1,6 +1,6 @@
-class  Dictionary
+module  Dictionary
   # カテゴライズ
-  categorize = {
+  Categorize = {
     '悲劇' => '悲劇',
     '勝機' => '勝機',
     '勧誘' => '勧誘',
@@ -80,7 +80,7 @@ class  Dictionary
 
   # ToDo: 時間があれば学校を小中高大でパターン分け;
 
-  conversion = {
+  Conversion = {
     '悲劇' => '女神の聖弓による誤射',
     '勝機' => 'ロンギヌスの槍の所有権',
     '勧誘' => 'ブリューナクの襲来',
