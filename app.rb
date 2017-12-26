@@ -30,7 +30,7 @@ post '/callback' do
         text = event.message['text']
         conversion_text = ""
         nm.parse(text) do |n|
-         word = category.fetch(n.surface)
+         word = category[n.surface]
          # if word
          #   conversion_text += conversion[word]
          # else
