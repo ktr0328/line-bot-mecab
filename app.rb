@@ -21,7 +21,8 @@ post '/callback' do
     end
   end
 
-  dict = Dictionary.new
+  categories = Dictionary::categorize
+  conversion = Dictionary::conversion
   events = client.parse_events_from(body)
   events.each {|event|
     if event['type'] == 'message' then
@@ -30,9 +31,9 @@ post '/callback' do
         text = event.message['text']
         conversion_text = ""
         nm.parse(text) do |n|
-          word = dict.get_categories.fetch(n.surface)
+          word = categories.fetch(n.surface)
           if word
-            conversion_text += dict.get_conversion[word]
+            conversion_text += conversion[word]
           else
             conversion_text += n.surface
           end
