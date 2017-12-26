@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 module  Dictionary
+=======
+module Dictionary
+>>>>>>> a14c6019616f43030d5b05bdfb250bce877737c0
   # カテゴライズ
   Categorize = {
     '悲劇' => '悲劇',
