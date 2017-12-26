@@ -36,7 +36,9 @@ post '/callback' do
           if word
             conversion_text += conversion[word]
           else
-            conversion_text += n.surface
+            if n.feature == '名詞' || n.feature == '動詞'
+              conversion_text += n.surface
+            end
           end
         end
 
