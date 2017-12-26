@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.4.1'
 gem 'line-bot-api'
 gem 'sinatra'
 gem 'mecab', '0.996'
