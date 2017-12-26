@@ -1,6 +1,6 @@
 class  Dictionary
   # カテゴライズ
-  categorize = {
+  @@categorize = {
     '悲劇' => '悲劇',
     '勝機' => '勝機',
     '勧誘' => '勧誘',
@@ -78,9 +78,13 @@ class  Dictionary
     '考査' => '試験'
   }
 
+  def get_categories
+    @@categorize
+  end
+
   # ToDo: 時間があれば学校を小中高大でパターン分け;
 
-  conversion = {
+  @@conversion = {
     '悲劇' => '女神の聖弓による誤射',
     '勝機' => 'ロンギヌスの槍の所有権',
     '勧誘' => 'ブリューナクの襲来',
@@ -132,6 +136,10 @@ class  Dictionary
     '進学' => '残酷たる時の流れ',
     '試験' => '智謀の限りを尽くせし戦争'
   }
+
+  def get_conversion
+    @@conversion
+  end
 
   def initialize
     @categorize = categorize

@@ -3,6 +3,7 @@ require 'line/bot'
 require 'json'
 require 'mecab'
 require 'natto'
+require './src/dictionary'
 
 def client
   @client ||= Line::Bot::Client.new {|config|
@@ -20,7 +21,7 @@ post '/callback' do
     end
   end
 
-  dictionary = Dictionary.new
+  dict = Dictionary.new
   events = client.parse_events_from(body)
   events.each {|event|
     if event['type'] == 'message' then
@@ -29,9 +30,9 @@ post '/callback' do
         text = event.message['text']
         conversion_text = ""
         nm.parse(text) do |n|
-          word = dictionary.categorize[n.surface]
+          word = dict.get_categories.fetch(n.surface)
           if word
-            conversion_text += dictionary.conversion[word]
+            conversion_text += dict.get_conversion[word]
           else
             conversion_text += n.surface
           end
