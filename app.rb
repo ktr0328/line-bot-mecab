@@ -36,7 +36,8 @@ post '/callback' do
           if word
             conversion_text += conversion[word]
           else
-            if n.feature == '名詞' || n.feature == '助詞'
+            feature = n.feature.split(',')[0]
+            if feature == '名詞' || feature == '助詞'
               conversion_text += n.surface
             end
           end

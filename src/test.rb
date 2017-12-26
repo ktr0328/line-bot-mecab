@@ -16,4 +16,7 @@ nm.parse(text) do |n|
  end
 end
 
-puts tagger.parse(text)
+# puts tagger.parse(text)
+nm.parse("前納先生") do |n|
+  puts n.feature
+end
