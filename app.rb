@@ -1,0 +1,52 @@
+require 'sinatra'
+require 'line/bot'
+require 'json'
+require 'mecab'
+require 'natto'
+
+def client
+  @client ||= Line::Bot::Client.new { |config|
+    config.channel_secret = ENV['CHANNEL_SECRET']
+    config.channel_token = ENV['CHANNEL_ACCESS_TOKEN']
+  }
+end
+
+post '/callback' do
+  body = request.body.read
+  signature = request.env['HTTP_X_LINE_SIGNATURE']
+  unless client.validate_signature(body, signature)
+    error 400 do 'Bad Request' end
+  end
+
+  events = client.parse_events_from(body)
+  events.each { |event|
+    if event['type'] == 'message' then
+      if event['message']['type'] == 'text' then
+        nm = Natto::MeCab.new
+        text = event.message['text']
+        conversion_text = ""
+        nm.parse(text) do |n|
+         if n.surface == '選定'
+           conversion_text += 'エクスカリバー'
+         elsif n.surface == '週末'
+           conversion_text += 'ラグナロク'
+         elsif n.surface == '僕' || n.surface == '俺' || n.surface == '私'
+           conversion_text += '我'
+         else
+           conversion_text += n.surface
+         end
+        end
+
+          message = [
+            {
+              type: 'text',
+              text: conversion_text
+            }
+          ]
+          client.reply_message(event['replyToken'], message)
+      end
+    end
+  }
+  "OK"
+
+end

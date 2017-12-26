@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+gem 'line-bot-api'
+gem 'sinatra'
+gem 'mecab', '0.996'
+gem 'natto'

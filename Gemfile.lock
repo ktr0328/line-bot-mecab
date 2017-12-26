@@ -1,0 +1,28 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ffi (1.9.18)
+    line-bot-api (1.2.0)
+    mecab (0.996)
+    natto (1.1.1)
+      ffi (>= 1.9.0)
+    rack (1.6.8)
+    rack-protection (1.5.3)
+      rack
+    sinatra (1.4.8)
+      rack (~> 1.5)
+      rack-protection (~> 1.4)
+      tilt (>= 1.3, < 3)
+    tilt (2.0.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  line-bot-api
+  mecab (= 0.996)
+  natto
+  sinatra
+
+BUNDLED WITH
+   1.15.1
