@@ -31,11 +31,11 @@ post '/callback' do
         conversion_text = ""
         nm.parse(text) do |n|
          word = category[n.surface]
-         # if word
-         #   conversion_text += conversion[word]
-         # else
-         #   conversion_text += n.surface
-         # end
+         if word
+           conversion_text += conversion[word]
+         else
+           conversion_text += n.surface
+         end
 
          if n.surface == '選定'
            conversion_text += 'エクスカリバー'
