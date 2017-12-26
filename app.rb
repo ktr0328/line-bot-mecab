@@ -21,8 +21,8 @@ post '/callback' do
     end
   end
 
-  categories = Dictionary::categorize
-  conversion = Dictionary::conversion
+  categories = Dictionary::Categorize
+  conversion = Dictionary::Conversion
   events = client.parse_events_from(body)
   events.each {|event|
     if event['type'] == 'message' then
