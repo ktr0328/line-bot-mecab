@@ -3,7 +3,7 @@ require 'line/bot'
 require 'json'
 require 'mecab'
 require 'natto'
-# require './src/dictionary'
+require './src/dictionary'
 
 def client
   @client ||= Line::Bot::Client.new { |config|
@@ -19,8 +19,8 @@ post '/callback' do
     error 400 do 'Bad Request' end
   end
 
-  # category = Dictionary::Categorize
-  # conversion = Dictionary::Conversion
+  category = Dictionary::Categorize
+  conversion = Dictionary::Conversion
 
   events = client.parse_events_from(body)
   events.each { |event|
