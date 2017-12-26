@@ -1,1 +1,1 @@
-web: bundle exec rackup config.ru -p $PORT
+bot: bash heroku_exec.sh
