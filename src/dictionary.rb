@@ -1,6 +1,6 @@
-class  Dictionary
+module  Dictionary
   # カテゴライズ
-  categorize = {
+  Categorize = {
     '悲劇' => '悲劇',
     '勝機' => '勝機',
     '勧誘' => '勧誘',
@@ -84,7 +84,7 @@ class  Dictionary
   # ネブカドネザルの鍵
   # 終焉、深淵、
 
-  conversion = {
+  Conversion = {
     '悲劇' => '女神の聖弓による誤射',
     '勝機' => 'ロンギヌスの槍の所有権',
     '勧誘' => 'ブリューナクの担い手',
