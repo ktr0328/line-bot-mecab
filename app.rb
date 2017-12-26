@@ -3,7 +3,7 @@ require 'line/bot'
 require 'json'
 require 'mecab'
 require 'natto'
-require './src/dictionary'
+# require './src/dictionary'
 
 def client
   @client ||= Line::Bot::Client.new { |config|
@@ -19,8 +19,8 @@ post '/callback' do
     error 400 do 'Bad Request' end
   end
 
-  category = Dictionary::Categorize
-  conversion = Dictionary::Conversion
+  # category = Dictionary::Categorize
+  # conversion = Dictionary::Conversion
 
   events = client.parse_events_from(body)
   events.each { |event|
@@ -30,24 +30,24 @@ post '/callback' do
         text = event.message['text']
         conversion_text = ""
         nm.parse(text) do |n|
-         word = category.fetch(n.surface)
-         if word
-           conversion_text += conversion[word]
-         else
-           conversion_text += n.surface
-         end
-
-         # if n.surface == '選定'
-         #   conversion_text += 'エクスカリバー'
-         # elsif n.surface == '週末'
-         #   conversion_text += 'ラグナロク'
-         # elsif n.surface == '僕' || n.surface == '俺' || n.surface == '私'
-         #   conversion_text += '我'
-         # elsif n.surface == '理解できない'
-         #   conversion_text += 'エニグマ'
+         # word = category.fetch(n.surface)
+         # if word
+         #   conversion_text += conversion[word]
          # else
          #   conversion_text += n.surface
          # end
+
+         if n.surface == '選定'
+           conversion_text += 'エクスカリバー'
+         elsif n.surface == '週末'
+           conversion_text += 'ラグナロク'
+         elsif n.surface == '僕' || n.surface == '俺' || n.surface == '私'
+           conversion_text += '我'
+         elsif n.surface == '理解できない'
+           conversion_text += 'エニグマ'
+         else
+           conversion_text += n.surface
+         end
         end
 
           message = [
